@@ -12,6 +12,8 @@ import {
   EyeOutlined,
   HeartOutlined,
   MenuOutlined,
+  ShoppingCartOutlined,
+  AimOutlined,
 } from "@ant-design/icons";
 import { useAuthContext } from "contexts/AuthContext";
 import logo from "../../Assets/logo.png";
@@ -62,9 +64,9 @@ export default function Header() {
 
   const marqueeStyle = {
     fontSize: '1em',
-    color:"white",
+    color: "white",
     padding: '5px 0',
-};
+  };
   useEffect(() => {
     const fetchUserData = async () => {
       if (user?.uid) {
@@ -176,18 +178,28 @@ export default function Header() {
       <hr />
       <div className="list-style-type-none">
         {user.email === "mnoumankhalid195@gmail.com" &&
-          <div
-            onClick={() => {
-              navigate("/manageAds");
-            }}
-          >
-            <AppstoreAddOutlined />
-            &ensp; My ads
-          </div>
+          <>
+            <div
+              onClick={() => {
+                navigate("/manageAds");
+              }}
+            >
+              <AppstoreAddOutlined />
+              &ensp; My ads
+            </div>
+            <div onClick={() => { navigate("/orders") }}>
+              <ShoppingCartOutlined />
+              &ensp; My orders
+            </div>
+          </>
         }
-        <div onClick={()=>{navigate("/wishlist")}}>
+        <div onClick={() => { navigate("/wishlist") }}>
           <HeartOutlined />
           &ensp; Favourites and saved searches
+        </div>
+        <div onClick={() => { navigate("/track") }}>
+          <AimOutlined />
+          &ensp; Track orders
         </div>
         <div
           onClick={() => {
@@ -222,231 +234,231 @@ export default function Header() {
         🍕 Delicious Pizzas &ensp;&ensp; 🍔 Juicy Burgers &ensp;&ensp; 🍟 Crispy Fries &ensp;&ensp; 🥗 Fresh Salads &ensp;&ensp; 🍣 Sushi Specials &ensp;&ensp; 🍜 Noodles & Pasta
       </marquee>
       <div className="d-flex align-items-center p-0 m-0 justify-content-center">
-        <img onClick={()=>{navigate("/")}} className="m-0 p-0" src="https://res.cloudinary.com/dobrs3wqw/image/upload/v1730630609/logo_wfbwmf.png" height={70} alt="lgo" />
+        <img onClick={() => { navigate("/") }} className="m-0 p-0" src="https://res.cloudinary.com/dobrs3wqw/image/upload/v1730630609/logo_wfbwmf.png" height={70} alt="lgo" />
       </div>
-    <header className="header container mt-0">
-      <div className="w-100">
-        <Button
-          type="link"
-          className="menu-toggle"
-          icon={<MenuOutlined />}
-          onClick={toggleSidebar}
-        />
-      </div>
-      <div className="container mt-0" id="second">
-        <div className="header-row row d-flex align-items-center">
-          <div className="col-9 p-0">
-            <div className="search-container">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                className="search-input"
-                placeholder="Find the one thing you love the most...."
-              />
-              <button onClick={handleSearchClick} className="search-button">
-                <i className="fas fa-search"></i>
-              </button>
+      <header className="header container mt-0">
+        <div className="w-100">
+          <Button
+            type="link"
+            className="menu-toggle"
+            icon={<MenuOutlined />}
+            onClick={toggleSidebar}
+          />
+        </div>
+        <div className="container mt-0" id="second">
+          <div className="header-row row d-flex align-items-center">
+            <div className="col-9 p-0">
+              <div className="search-container">
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="search-input"
+                  placeholder="Find the one thing you love the most...."
+                />
+                <button onClick={handleSearchClick} className="search-button">
+                  <i className="fas fa-search"></i>
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="col-2 p-0">
-            <div
-              className="auth-buttons d-flex align-items-center"
-              style={{ marginLeft: "10px" }}
-            >
-              {isAuthenticated ? (
-                <>
-                  <Link to="/">
-                    <BellOutlined id="icon" style={{ fontSize: 24 }} />
-                  </Link>
-                  <Link to="/">
-                    <MessageOutlined id="icon2" style={{ fontSize: 24 }} />
-                  </Link>
-                  &nbsp;
-                  <Dropdown overlay={userMenu} trigger={["click"]}>
-                    <span className="d-flex">
+            <div className="col-2 p-0">
+              <div
+                className="auth-buttons d-flex align-items-center"
+                style={{ marginLeft: "10px" }}
+              >
+                {isAuthenticated ? (
+                  <>
+                    <Link to="/">
+                      <BellOutlined id="icon" style={{ fontSize: 24 }} />
+                    </Link>
+                    <Link to="/">
+                      <MessageOutlined id="icon2" style={{ fontSize: 24 }} />
+                    </Link>
+                    &nbsp;
+                    <Dropdown overlay={userMenu} trigger={["click"]}>
+                      <span className="d-flex">
+                        <img
+                          src={
+                            userData.profilePicUrl ||
+                            "https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"
+                          }
+                          alt="Avatar"
+                          style={{
+                            display: "inline-block",
+                            width: 30,
+                            height: 30,
+                            borderRadius: "50%",
+                            marginRight: 8,
+                          }}
+                        />{" "}
+                        ▼
+                      </span>
+                    </Dropdown>
+                    <span className="sell-button" onClick={handleSellClick}>
                       <img
-                        src={
-                          userData.profilePicUrl ||
-                          "https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"
-                        }
-                        alt="Avatar"
-                        style={{
-                          display: "inline-block",
-                          width: 30,
-                          height: 30,
-                          borderRadius: "50%",
-                          marginRight: 8,
-                        }}
-                      />{" "}
-                      ▼
+                        src="https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg"
+                        alt="Sell"
+                        className="sell-icon"
+                      />
+                      <span className="sell-text">{user.email === "mnoumankhalid195@gmail.com" ? "Sell" : "Buy"}</span>
                     </span>
-                  </Dropdown>
-                  <span className="sell-button" onClick={handleSellClick}>
-                    <img
-                      src="https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg"
-                      alt="Sell"
-                      className="sell-icon"
-                    />
-                    <span className="sell-text">{user.email === "mnoumankhalid195@gmail.com" ? "Sell" : "Buy"}</span>
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="login" onClick={showModal}>
-                    Login
-                  </span>
-                  <span className="sell-button" onClick={handleSellClick}>
-                    <img
-                      src="https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg"
-                      alt="Sell"
-                      className="sell-icon"
-                    />
-                    <span className="sell-text">{user.email === "mnoumankhalid195@gmail.com" ? "Sell" : "Buy"}</span>
-                  </span>
-                </>
-              )}
+                  </>
+                ) : (
+                  <>
+                    <span className="login" onClick={showModal}>
+                      Login
+                    </span>
+                    <span className="sell-button" onClick={handleSellClick}>
+                      <img
+                        src="https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg"
+                        alt="Sell"
+                        className="sell-icon"
+                      />
+                      <span className="sell-text">{user.email === "mnoumankhalid195@gmail.com" ? "Sell" : "Buy"}</span>
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Login Modal */}
-      <Modal visible={isModalVisible} onCancel={handleCancel} footer={null}>
-        {modalView === "default" && (
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-          >
-            <div className="d-flex justify-content-center my-3">
-              <img src="https://res.cloudinary.com/dobrs3wqw/image/upload/v1730630609/logo_wfbwmf.png" alt="logo" height={60} />
-            </div>
-            <h4 className="text-center fw-bold">Login to your account</h4>
-            <div className="auth-box" onClick={handleGoogleLogin}>
-              <img
-                src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
-                alt="Google logo"
-                height={40}
-              />{" "}
-              Login with Google
-            </div>
-            <div className="auth-box" onClick={openEmailLogin}>
-              <MailOutlined style={{ fontSize: "24px", color: "#002f34" }} />{" "}
-              Login with Email
-            </div>
-            <div className="auth-box" onClick={openPhoneLogin}>
-              <PhoneOutlined style={{ fontSize: "24px", color: "#002f34" }} />{" "}
-              Login with Phone
-            </div>
-            <div id="navigator" onClick={openSignup}>
-              New? Create an account
-            </div>
-          </div>
-        )}
-
-        {modalView === "phoneLogin" && (
-          <div>
-            <h4 className="text-center fw-bold my-4">Login with Phone</h4>
-            <label htmlFor="phone">Phone</label>
-            <Input
-              placeholder="Phone Number"
-              prefix={<PhoneOutlined />}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            <label htmlFor="password" className="mt-4">
-              Password
-            </label>
-            <Input.Password
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button type="primary" block className="mt-2">
-              Login
-            </Button>
-            <Button type="link" block onClick={() => setModalView("default")}>
-              Back
-            </Button>
-          </div>
-        )}
-
-        {modalView === "emailLogin" && (
-          <div>
-            <h4 className="text-center fw-bold my-4">Login with Email</h4>
-            <label htmlFor="email">Email</label>
-            <Input
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="password" className="mt-4">
-              Password
-            </label>
-            <Input.Password
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mb-4"
-            />
-            {authError && <p style={{ color: "red" }}>{authError}</p>}
-            <Button type="primary" block className="mt-2" onClick={handleLogin}>
-              Login
-            </Button>
-            <Button type="link" block onClick={() => setModalView("default")}>
-              Back
-            </Button>
-          </div>
-        )}
-
-        {modalView === "signup" && (
-          <div>
-            <h4 className="text-center fw-bold my-4">Create an OLX Account</h4>
-            <Input
-              placeholder="Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              className="mb-4"
-              prefix={<UserOutlined />}
-            />
-            <Input
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              prefix={<MailOutlined />}
-            />
-            <Input.Password
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-4"
-            />
-            <Input.Password
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="my-4"
-            />
-            {authError && <p style={{ color: "red" }}>{authError}</p>}
-            <Button
-              type="primary"
-              block
-              className="mt-2"
-              onClick={handleSignup}
+        {/* Login Modal */}
+        <Modal visible={isModalVisible} onCancel={handleCancel} footer={null}>
+          {modalView === "default" && (
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "15px" }}
             >
-              Sign Up
-            </Button>
-            <Button type="link" block onClick={() => setModalView("default")}>
-              Back
-            </Button>
-          </div>
-        )}
-      </Modal>
-      <Sidebar
-        visible={isSidebarVisible}
-        onClose={() => setIsSidebarVisible(false)}
-        userMenu={userMenu}
-      />
-    </header>
+              <div className="d-flex justify-content-center my-3">
+                <img src="https://res.cloudinary.com/dobrs3wqw/image/upload/v1730630609/logo_wfbwmf.png" alt="logo" height={60} />
+              </div>
+              <h4 className="text-center fw-bold">Login to your account</h4>
+              <div className="auth-box" onClick={handleGoogleLogin}>
+                <img
+                  src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+                  alt="Google logo"
+                  height={40}
+                />{" "}
+                Login with Google
+              </div>
+              <div className="auth-box" onClick={openEmailLogin}>
+                <MailOutlined style={{ fontSize: "24px", color: "#002f34" }} />{" "}
+                Login with Email
+              </div>
+              <div className="auth-box" onClick={openPhoneLogin}>
+                <PhoneOutlined style={{ fontSize: "24px", color: "#002f34" }} />{" "}
+                Login with Phone
+              </div>
+              <div id="navigator" onClick={openSignup}>
+                New? Create an account
+              </div>
+            </div>
+          )}
+
+          {modalView === "phoneLogin" && (
+            <div>
+              <h4 className="text-center fw-bold my-4">Login with Phone</h4>
+              <label htmlFor="phone">Phone</label>
+              <Input
+                placeholder="Phone Number"
+                prefix={<PhoneOutlined />}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+              />
+              <label htmlFor="password" className="mt-4">
+                Password
+              </label>
+              <Input.Password
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Button type="primary" block className="mt-2">
+                Login
+              </Button>
+              <Button type="link" block onClick={() => setModalView("default")}>
+                Back
+              </Button>
+            </div>
+          )}
+
+          {modalView === "emailLogin" && (
+            <div>
+              <h4 className="text-center fw-bold my-4">Login with Email</h4>
+              <label htmlFor="email">Email</label>
+              <Input
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="password" className="mt-4">
+                Password
+              </label>
+              <Input.Password
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mb-4"
+              />
+              {authError && <p style={{ color: "red" }}>{authError}</p>}
+              <Button type="primary" block className="mt-2" onClick={handleLogin}>
+                Login
+              </Button>
+              <Button type="link" block onClick={() => setModalView("default")}>
+                Back
+              </Button>
+            </div>
+          )}
+
+          {modalView === "signup" && (
+            <div>
+              <h4 className="text-center fw-bold my-4">Create an OLX Account</h4>
+              <Input
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                className="mb-4"
+                prefix={<UserOutlined />}
+              />
+              <Input
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                prefix={<MailOutlined />}
+              />
+              <Input.Password
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-4"
+              />
+              <Input.Password
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="my-4"
+              />
+              {authError && <p style={{ color: "red" }}>{authError}</p>}
+              <Button
+                type="primary"
+                block
+                className="mt-2"
+                onClick={handleSignup}
+              >
+                Sign Up
+              </Button>
+              <Button type="link" block onClick={() => setModalView("default")}>
+                Back
+              </Button>
+            </div>
+          )}
+        </Modal>
+        <Sidebar
+          visible={isSidebarVisible}
+          onClose={() => setIsSidebarVisible(false)}
+          userMenu={userMenu}
+        />
+      </header>
     </>
   );
 }

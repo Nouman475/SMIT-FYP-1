@@ -10,6 +10,8 @@ import Menu from "./AdsRoutes/urlCategory";
 import Product from "./Product/Product";
 import Checkout from "./Checkout/CheckoutPage";
 import Cart from "./Cart/Cart";
+import Track from "./Track-order/Track";
+import Order from "./Orders/order";
 
 
 export default function Frontend() {
@@ -22,6 +24,8 @@ export default function Frontend() {
       <Route path="/product/:id" element={<Product />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />
+      <Route path="/track" element={<Track />} />
+      <Route path="/orders" element={<Order />} />
       <Route path="/editProfile/info" element={<Setting />} />
       <Route path="/createAd" element={<AdForm />} />
       <Route path="/manageAds" element={<ManageAds />} />
