@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Foodify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1. Project Overview
+**Title:** Foodify  
+**Description:** A full-stack e-commerce site featuring a comprehensive dashboard for managing food items.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 2. Features
+- 🎨 **Visually appealing landing page**
+- 🔐 **User authentication** (Login/Signup)
+- 🛍️ **Product filtering** (by price, category, or date) and detailed previews
+- 🛒 **Add to cart**, wishlist, and order tracking functionalities
+- 🖥️ **Admin dashboard** for managing products (add, update, delete)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 3. Tech Stack
+- **Frontend:** React, Bootstrap, SCSS
+- **Backend:** Firebase (Backend services)
+- **Database:** Firebase Firestore
+- **Other Tools:** Ant Design, Toastify JS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 4. Pages and Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🔹 Landing Page
+- A visually appealing homepage that welcomes users.
+- Highlights featured products, offers, and categories.
+- User-friendly navigation and filtering options.
 
-### `npm run build`
+### 🔹 Login Page
+- User authentication using Firebase Authentication.
+- Supports email and password login.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🔹 Signup Page
+- New user registration with form validation.
+- Firebase Authentication integration for creating new accounts.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔹 Dashboard
+**Sub-pages:**
+1. **All Products:**  
+   Admin view of all products with options to edit or delete.
+2. **Add New Product:**  
+   Form for adding new products, including fields for product details, images, and categories.
+3. **Orders:**  
+   Overview of customer orders, with the ability to mark orders as completed or shipped.
+4. **Track Order:**  
+   Allows users to view the current status of their placed orders.
+5. **User Account:**  
+   User profile settings, allowing users to update personal information.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🔹 Product Home Page
+- Displays a collection of products with filter and sorting options for easy navigation.
 
-### `npm run eject`
+### 🔹 Product Preview Page
+- Detailed view of a single product, including images, description, price, reviews, and calculated seller ratings.
+- Option to add the product to the cart or wishlist.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🔹 Wishlist Page
+- Displays products that users have added to their wishlist.
+- Ability to move products to the cart or remove them from the wishlist.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🔹 Cart Page
+- Users can review the products they’ve added to the cart.
+- Option to adjust product quantities or remove items.
+- Displays the total cost before proceeding to checkout.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 🔹 Checkout Page
+- Final step in the purchase process.
+- Captures shipping address, payment method (Visa, Cash on Delivery, etc.), and displays the order summary.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
+## Contributing
 
-## Learn More
+Contributions are always welcome!
+Please adhere to this project's `code of conduct`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation
 
-### Code Splitting
+Run Locally
+```bash
+git clone git clone https://github.com/Nouman475/SMIT-FYP-1
+```
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm install
+```
+  Run 
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [Muhammad Nouman](https://github.com/Nouman475)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgements
+Special thanks to the open-source community for the tools and libraries used in this project.
+## License
 
-### Advanced Configuration
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
